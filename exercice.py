@@ -16,10 +16,18 @@ def get_random_sentence(animals, adjectives, fruits):
 	return phrase % tuple(liste_mots) 
 
 def encrypt(text, shift):
-	return ""
+	result = ""
+	for letter in text:
+		encrypted_letter = letter
+		if encrypted_letter.isalpha():
+			index = ord(letter.upper()) - ord("A")
+			encrypted_index = (index + shift) % 26
+			encrypted_letter = chr(ord("A") + encrypted_index)
+		result += encrypted_letter
+	return result
 
 def decrypt(encrypted_text, shift):
-	return ""
+	return encrypt(encrypted_text, -shift)
 
 
 if __name__ == "__main__":
